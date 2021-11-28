@@ -4,6 +4,7 @@
         hiiiii <br>
         <router-link to="allTeamMember"><button>allTeamMember</button></router-link>
         <router-link to="index"><button>index(homepage)</button></router-link>
+
         allTeamMember
     </div>
 </template>

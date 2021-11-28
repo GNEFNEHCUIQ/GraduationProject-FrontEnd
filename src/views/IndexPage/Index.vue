@@ -29,12 +29,16 @@
                 competitionList: [],
                 educationList: []
 
+                //count:0,
+                //pageIndex:1,
+                //pageSize:5,
             }
         },
             mounted(){
                 this.getRecentArticle()
             },
             methods:{
+
                 getRecentArticle:function () {
                     this.axios({
                         headers: {
@@ -43,14 +47,28 @@
                         method:'GET',
                         url:'/article/findAllArticle',
                     }).then(res=>{
-                        console.log("res : "+res)
+                        /*console.log("res : "+res)
                         console.log("res.data : "+res.data.data)
-                        console.log("res.data.msg : "+res.data.msg)
+                        console.log("res.data.msg : "+res.data.msg)*/
                         let response=res.data
-                        this.articlesList=response
-                        console.log("articlesList : "+this.articlesList)
+                        this.articlesList=response/*
+                        console.log("articlesList : "+this.articlesList)*/
+                    })
+                },
+
+                getTotalCount:function () {
+                    this.axios({
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        method:'GET',
+                        url:"/article/getArticlePageCount"
+                    }).then(res=>{
+                        let response=res.data
+                        this.count=res.data.totalCount
                     })
                 }
+
             },
             
 

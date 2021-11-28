@@ -4,6 +4,8 @@ import Login from '../views/Login.vue'
 import Home from '../views/HomePage.vue'
 import Index from "../views/IndexPage/Index.vue"
 
+import AllArticle from "../views/ArticlePage/AllArticle"
+
 import TeamMain from '../views/TeamPage/TeamMain.vue'
 import AllTeamMember from '../views/TeamPage/AllTeamMember.vue'
 
@@ -34,6 +36,11 @@ const routes = [
         path: '/index',
         name: 'Index',
         component: Index
+    },
+    {
+        path: '/allArticle',
+        name: 'AllArticle',
+        component: AllArticle
     }
 
   /*,

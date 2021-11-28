@@ -7,16 +7,26 @@
         </form>
         <p>uid is: {{ uid }}</p>
         <p>password is: {{ password }}</p>
+        <br>
+        <router-link to="index"><button>index(homepage)</button></router-link>
+        <br>
+        <router-link to="allTeamMember"><button>allTeamMember</button></router-link>
+        <br>
+        <button type="button" @click="findAllArticleWithPage">get</button>
+        <router-link to="AllArticle"><button>AllArticle</button></router-link>
+        <button @click="alertFunction">global_</button>
     </div>
 </template>
 
 <script>
+
+
     export default {
         name: "Login",
         data:function(){
             return{
                 uid: null,
-                password: ''
+                password: '',
             }
         },
         mounted() {
@@ -49,6 +59,30 @@
                     })
 
                 }
+            },
+            findAllArticleWithPage:function () {
+                this.axios({
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    method:'POST',
+                    url:'/article/findAllArticleWithPage',
+                    params:{
+                        pageNum: 1,
+                    }
+                }).then((res)=>{
+                    console.log(res)
+                    console.log(res.data)
+                    console.log(res.data[0])
+                    //this.$router.replace('/home')
+                    //location.href='/home';
+                }).catch((err)=>{
+                    console.log(err)
+                    alert(err)
+                })
+            },
+            alertFunction:function () {
+                    console.log(this.global._recentlyArticlePageSize)
             }
         },
 
