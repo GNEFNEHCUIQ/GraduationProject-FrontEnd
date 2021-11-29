@@ -15,6 +15,7 @@
         <button type="button" @click="findAllArticleWithPage">get</button>
         <router-link to="AllArticle"><button>AllArticle</button></router-link>
         <button @click="alertFunction">global_</button>
+        <router-link to="Register"><button>Register</button></router-link>
     </div>
 </template>
 

@@ -8,6 +8,8 @@ import AllArticle from "../views/ArticlePage/AllArticle"
 
 import TeamMain from '../views/TeamPage/TeamMain.vue'
 import AllTeamMember from '../views/TeamPage/AllTeamMember.vue'
+import AddArticle from "../views/ArticlePage/AddArticle";
+import Register from "../views/Register";
 
 Vue.use(VueRouter)
 
@@ -41,6 +43,16 @@ const routes = [
         path: '/allArticle',
         name: 'AllArticle',
         component: AllArticle
+    },
+    {
+        path: '/addArticle',
+        name: 'AddArticle',
+        component: AddArticle
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: Register
     }
 
   /*,
