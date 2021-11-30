@@ -4,6 +4,9 @@
             name: <input type="text" v-model="name" placeholder="4~16">
             password: <input type="password" v-model="pwd" placeholder="4~16">
             <button type="button" @click="register">register</button>
+            <br>
+            name:{{ name }}
+            pwd:{{ pwd }}
         </form>
     </div>
 </template>
@@ -20,11 +23,10 @@
         },
         methods:{
             register:function () {
-                let User=JSON.stringify({
+                let userTemp=JSON.stringify({
                     name: this.name,
                     password: this.pwd,
                 })
-
                 let patten= /^[a-zA-Z0-9_-]{4,16}$/
                 if (!patten.test(this.name)){
                     alert("要4~16名字")
@@ -33,14 +35,14 @@
                 }else{
                     /*this.axios({
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json;charset=utf-8'
                         },
                         dataType:"text",
                         charset:"utf-8",
                         method:'POST',
                         url:'/user/doRegister',
                         params:{
-                            User
+                            user
                         }
                     }).then((res)=>{
                         console.log(res)
@@ -52,7 +54,7 @@
                         console.log(err)
                         alert(err)
                     })*/
-                    this.axios.post('/user/doRegister', User,{
+                    this.axios.post('/user/doRegister', userTemp,{
                         headers: {
                             "Content-Type": "application/json;charset=utf-8"  //头部信息
                         }

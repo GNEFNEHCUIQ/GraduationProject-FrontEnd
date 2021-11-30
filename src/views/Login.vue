@@ -16,6 +16,7 @@
         <router-link to="AllArticle"><button>AllArticle</button></router-link>
         <button @click="alertFunction">global_</button>
         <router-link to="Register"><button>Register</button></router-link>
+        <button @click="delArticle">del</button>
     </div>
 </template>
 
@@ -70,6 +71,7 @@
                     url:'/article/findAllArticleWithPage',
                     params:{
                         pageNum: 1,
+                        pageSize: 5
                     }
                 }).then((res)=>{
                     console.log(res)
@@ -84,6 +86,21 @@
             },
             alertFunction:function () {
                     console.log(this.global._recentlyArticlePageSize)
+            },
+            delArticle:function () {
+                this.axios.post('/article/delArticle', 6,{
+                    headers: {
+                        "Content-Type": "application/json;charset=utf-8"  //头部信息
+                    }
+                })
+                    .then(function(res) {
+                        console.log(res)
+                        console.log(res.data)
+                        this.userInfoList=res.data
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    })
             }
         },
 

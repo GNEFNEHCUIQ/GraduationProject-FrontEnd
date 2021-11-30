@@ -48,9 +48,9 @@
                     },
                     dataType: "json",
                     params:{
-                        pageNum
+                        pageNum:1
                     },
-                    method:'GET',
+                    method:'POST',
                     url:'/team/findAllTeamMember',
                 }).then((res)=>{
                     console.log("pageNum : "+pageNum)
