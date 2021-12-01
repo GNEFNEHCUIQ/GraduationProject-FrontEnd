@@ -60,6 +60,7 @@
                         }
                     })
                         .then(function(response) {
+                            alert(response.data[0].message)
                         })
                         .catch(function(error) {
                             console.log(error);

@@ -10,6 +10,7 @@ import TeamMain from '../views/TeamPage/TeamMain.vue'
 import AllTeamMember from '../views/TeamPage/AllTeamMember.vue'
 import AddArticle from "../views/ArticlePage/AddArticle";
 import Register from "../views/Register";
+import UserInfo from "../views/UserPage/UserInfo";
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
         path: '/register',
         name: 'Register',
         component: Register
+    },
+    {
+        path: '/userInfo',
+        name: 'UserInfo',
+        component: UserInfo
     }
 
   /*,

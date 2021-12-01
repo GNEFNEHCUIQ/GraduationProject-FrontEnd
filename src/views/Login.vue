@@ -1,11 +1,11 @@
 <template>
     <div class="login">
         <form>
-            uid：<input type="text" id="uid" name="uid" v-model="uid" placeholder="请输入uid">
+            user_id：<input type="text" id="user_id" name="user_id" v-model="user_id" placeholder="请输入user_id">
             密码：<input type="password" id="password" v-model="password" name="password" placeholder="请输入密码">
             <button id="login" type="button" @click="login">提交</button>
         </form>
-        <p>uid is: {{ uid }}</p>
+        <p>user_id is: {{ user_id }}</p>
         <p>password is: {{ password }}</p>
         <br>
         <router-link to="index"><button>index(homepage)</button></router-link>
@@ -17,6 +17,7 @@
         <button @click="alertFunction">global_</button>
         <router-link to="Register"><button>Register</button></router-link>
         <button @click="delArticle">del</button>
+        <router-link to="UserInfo"><button>UserInfo</button></router-link>
     </div>
 </template>
 
@@ -27,7 +28,7 @@
         name: "Login",
         data:function(){
             return{
-                uid: null,
+                user_id: null,
                 password: '',
             }
         },
@@ -36,8 +37,8 @@
         methods:{
 
             login:function () {
-                if(this.uid==''||this.password=='') {
-                    alert('uid或密码不能为空')
+                if(this.user_id==''||this.password=='') {
+                    alert('user_id或密码不能为空')
                 }else{
                     this.axios({
                         headers: {
@@ -46,7 +47,7 @@
                         method:'POST',
                         url:'/user/doLogin',
                         params:{
-                            uid: this.uid,
+                            user_id: this.user_id,
                             password: this.password,
                         }
                     }).then((res)=>{
