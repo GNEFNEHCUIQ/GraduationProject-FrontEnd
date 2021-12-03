@@ -18,6 +18,7 @@
         <router-link to="Register"><button>Register</button></router-link>
         <button @click="delArticle">del</button>
         <router-link to="UserInfo"><button>UserInfo</button></router-link>
+        <router-link to="blank"><button>blank</button></router-link>
     </div>
 </template>
 
@@ -45,7 +46,7 @@
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },
                         method:'POST',
-                        url:'/user/doLogin',
+                        url:'/doLogin',
                         params:{
                             user_id: this.user_id,
                             password: this.password,

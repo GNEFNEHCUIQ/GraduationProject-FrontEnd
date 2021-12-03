@@ -54,7 +54,7 @@
                         console.log(err)
                         alert(err)
                     })*/
-                    this.axios.post('/user/doRegister', userTemp,{
+                    this.axios.post('/doRegister', userTemp,{
                         headers: {
                             "Content-Type": "application/json;charset=utf-8"  //头部信息
                         }

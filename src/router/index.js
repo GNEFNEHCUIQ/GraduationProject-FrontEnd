@@ -11,6 +11,7 @@ import AllTeamMember from '../views/TeamPage/AllTeamMember.vue'
 import AddArticle from "../views/ArticlePage/AddArticle";
 import Register from "../views/Register";
 import UserInfo from "../views/UserPage/UserInfo";
+import blank from "../views/blank";
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,11 @@ const routes = [
         path: '/userInfo',
         name: 'UserInfo',
         component: UserInfo
+    },
+    {
+        path: '/blank',
+        name: 'blank',
+        component: blank
     }
 
   /*,
