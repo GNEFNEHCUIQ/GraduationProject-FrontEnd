@@ -1,70 +1,92 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-import Home from '../views/HomePage.vue'
-import Index from "../views/IndexPage/Index.vue"
+import Index from '../views/Index.vue'
 
-import AllArticle from "../views/ArticlePage/AllArticle"
+import AllArticle from "../views/Article/AllArticle"
 
-import TeamMain from '../views/TeamPage/TeamMain.vue'
-import AllTeamMember from '../views/TeamPage/AllTeamMember.vue'
-import AddArticle from "../views/ArticlePage/AddArticle";
+import TeamMain from '../views/Team/TeamMain.vue'
+import AllTeamMember from '../views/Team/AllTeamMember.vue'
+import AddArticle from "../views/Article/AddArticle";
 import Register from "../views/Register";
-import UserInfo from "../views/UserPage/UserInfo";
+import UserInfo from "../views/User/UserInfo";
 import blank from "../views/blank";
+
+import ArticleContent from "../views/Article/ArticleContent"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home
+        path: '/login',
+        name: 'Login',
+        component: Login,
+        hidden:true
   },
     {
-        path: '/teamMain',
-        name: 'TeamMain',
-        component: TeamMain
-    },
-    {
-        path: '/allTeamMember',
-        name: 'AllTeamMember',
-        component: AllTeamMember
+        path: '/register',
+        name: 'Register',
+        component: Register,
+        hidden:true
     },
     {
         path: '/index',
         name: 'Index',
-        component: Index
+        component: Index,
+        children:[
+            {
+                path:'/home',
+                name:'Home',
+                component:()=>import("../views/Home/Home"),
+            },
+            {
+                path:'/article/basic/articleContent/:id',
+                name:'article/basic/articleContent',
+                component: ArticleContent
+            }
+        ]
     },
+
+
+
     {
         path: '/allArticle',
         name: 'AllArticle',
-        component: AllArticle
+        component: AllArticle,
+        children:[
+            {
+                path: '/teamMain',
+                name: 'TeamMain',
+                component: TeamMain
+            },
+            {
+                path: '/allTeamMember',
+                name: 'AllTeamMember',
+                component: AllTeamMember
+            }
+        ]
     },
     {
         path: '/addArticle',
         name: 'AddArticle',
-        component: AddArticle
-    },
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register
-    },
-    {
-        path: '/userInfo',
-        name: 'UserInfo',
-        component: UserInfo
-    },
-    {
-        path: '/blank',
-        name: 'blank',
-        component: blank
+        component: AddArticle,
+        children:[
+            {
+                path: '/register',
+                name: 'Register',
+                component: Register
+            },
+            {
+                path: '/userInfo',
+                name: 'UserInfo',
+                component: UserInfo
+            },
+            {
+                path: '/blank',
+                name: 'blank',
+                component: blank
+            }
+        ]
     }
 
   /*,

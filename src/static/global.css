@@ -1,0 +1,14 @@
+body{
+    padding: 0;
+    margin:0 auto;
+    background-color: #ddd;
+
+}
+.el-header{
+    #height: 5vh;
+    #background-color: #000;
+}
+.el-main{
+    padding: 10px;
+    border: 1px solid #f00;
+}
