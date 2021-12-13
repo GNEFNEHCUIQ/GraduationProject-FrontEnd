@@ -69,7 +69,7 @@ export const formatRoutes=(router) =>{
                     require(['../views/Article/' + component + '.vue'], resolve);
                 }else if(component.startsWith('Admin')){
                     require(['../views/Admin/' + component + '.vue'], resolve);
-                }else if(component.startsWith('Compete')){
+                }else if(component.startsWith('Admin')){
                     require(['../views/Compete/' + component + '.vue'], resolve);
                 }else if(component.startsWith('Teacher')){
                     require(['../views/Teacher/' + component + '.vue'], resolve);

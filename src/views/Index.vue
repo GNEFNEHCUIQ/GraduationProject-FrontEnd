@@ -39,4 +39,8 @@
         position: relative;
         background-color: #333;
     }
+    .el-container /deep/ .el-main{
+        padding: 0;
+
+    }
 </style>

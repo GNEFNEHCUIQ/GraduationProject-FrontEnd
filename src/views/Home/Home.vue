@@ -3,7 +3,10 @@
         <el-row :gutter="5">
             <el-col :span="8">
                 <el-card shadow="hover">
-                    <div class="labal">banner</div>
+                    <div slot="banner" class="banner">
+                        <span>banner</span>
+                        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                    </div>
                     <div class="content"></div>
                 </el-card>
             </el-col>

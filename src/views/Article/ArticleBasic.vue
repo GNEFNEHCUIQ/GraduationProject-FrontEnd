@@ -134,7 +134,6 @@
                         this.pageForm.totalPages=res.data.totalPages
                         console.log("this.pageForm:"+JSON.stringify(this.pageForm))
                         console.log("articleList : "+JSON.stringify(this.articleList))
-
                     }
                 }).catch((err)=>{
                     console.log(err)

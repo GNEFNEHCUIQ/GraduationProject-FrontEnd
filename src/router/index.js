@@ -14,6 +14,9 @@ import blank from "../views/blank";
 
 import ArticleContent from "../views/Article/ArticleContent"
 
+import TeamManaging from '../views/Team/TeamManaging.vue'
+import TeamItemDetail from '../views/Team/TeamItemDetail.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,7 +46,22 @@ const routes = [
                 path:'/article/basic/articleContent/:id',
                 name:'article/basic/articleContent',
                 component: ArticleContent
-            }
+            },
+            {
+                path:'/userInfo',
+                name:'UserInfo',
+                component:UserInfo
+            },
+            {
+                path:'/team/manage/teamManaging/:id',
+                name:'team/manage/teamManaging',
+                component: TeamManaging
+            },
+            {
+                path:'/team/item/itemDetail/:id',
+                name:'team/item/itemDetail',
+                component: TeamItemDetail
+            },
         ]
     },
 

@@ -5,7 +5,7 @@ import router from '../router'
 
 axios.interceptors.request.use(config => {
     //判断如果存在token，请求携带这个token
-    console.log("window.sessionStorage.getItem('tokenStr'):"+window.sessionStorage.getItem('tokenStr'))
+    //console.log("window.sessionStorage.getItem('tokenStr'):"+window.sessionStorage.getItem('tokenStr'))
     if (window.sessionStorage.getItem('tokenStr')) {
         //让被拦截的请求携带token，放在请求体 Authorization 中
         config.headers['Authorization'] = window.sessionStorage.getItem('tokenStr');

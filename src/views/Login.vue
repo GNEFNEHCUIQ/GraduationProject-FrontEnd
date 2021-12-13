@@ -123,8 +123,8 @@
                             window.sessionStorage.setItem("tokenStr",tokenStr)
                             console.log("-------------------------------------------------------")
                             console.log("tokenStr:"+JSON.stringify(tokenStr))*/
-                            console.log("response.data.tokenHead:"+response.data.tokenHead)
-                            console.log("response.data.token:"+response.data.token)
+                            /*console.log("response.data.tokenHead:"+response.data.tokenHead)
+                            console.log("response.data.token:"+response.data.token)*/
                             const tokenStr = response.data.tokenHead + ' ' + response.data.token;
                             //将登录成功，拼接后的token存入全局，
                             window.sessionStorage.setItem('tokenStr', tokenStr);

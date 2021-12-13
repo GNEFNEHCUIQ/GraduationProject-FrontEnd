@@ -1,4 +1,5 @@
 <template>
+    <div class="CommonSider">
     <!--<el-menu router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" >-->
         <el-menu router unique-opened :collapse="isCollapse">
         <h3>众</h3>
@@ -18,7 +19,14 @@
                     {{children.name}}
                 </el-menu-item>
         </el-submenu>
+        <router-link to="/userInfo">
+            <div class="block">
+                <el-avatar size="medium" :src="circleUrl"></el-avatar>
+            </div>
+        </router-link>
     </el-menu>
+
+    </div>
 </template>
 
 <script>
@@ -27,7 +35,9 @@
         data() {
             return {
                 //isCollapse: true
-                isCollapse:true
+                isCollapse:true,
+
+                circleUrl:"https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
             };
         },
         computed:{
@@ -59,5 +69,10 @@
     }
     .i{
         color: #000;
+    }
+    .block{
+        position:absolute;
+        left:1vw;
+        bottom: 5vh;
     }
 </style>
