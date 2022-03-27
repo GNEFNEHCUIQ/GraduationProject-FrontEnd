@@ -159,7 +159,7 @@
 </script>
 
 <style scoped>
-    .ArticleBasic{
+    /*.ArticleBasic{
         height: 100%;
         width: 100%;
         border: 1px solid;
@@ -184,5 +184,5 @@
     }
     .articleContainer{
         border: 1px solid #f00;
-    }
+    }*/
 </style>

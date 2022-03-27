@@ -81,7 +81,7 @@ export const putRequest = (url, params) => {
     //请求后端接口
     return axios({
         //请求方法 post 方法
-        method: 'put',
+        method: 'PUT',
         //请求路径
         url: `${base}${url}`,
         //数据

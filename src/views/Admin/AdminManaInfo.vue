@@ -1,12 +1,12 @@
 <template>
-    <div class="competeManager">
-        competeManager
+    <div class="manageInfo">
+怎么看不到呢
     </div>
 </template>
 
 <script>
     export default {
-        name: "CompeteManager"
+        name: "AdminManaInfo"
     }
 </script>
 

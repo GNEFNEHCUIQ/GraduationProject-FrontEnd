@@ -1,10 +1,11 @@
 <template>
     <header>
-        <div class="l-content">
-<router-link to="/login">login</router-link>
-            <button type="button" @click="logout">logout</button>
+        <div class="l-content inline">
+            <a href="#"><i class="el-icon-arrow-left" onClick="javascript :history.back(-1);"></i></a>
         </div>
-        <div class="r-content"></div>
+        <div class="r-content inline">
+            <el-button id="logoutBtn" type="primary" @click="logout">logout</el-button>
+        </div>
     </header>
 </template>
 
@@ -22,6 +23,7 @@
                     this.postRequest('/logout')
                     // 清除 session 缓存
                     window.sessionStorage.removeItem("tokenStr")
+                    /*store.state.routes=null*/
                     // 跳转到登录页
                     this.$router.replace('/login');
                 }).catch(() => {
@@ -36,9 +38,23 @@
     }
 </script>
 
-<style scoped>
-    header{
+<style>
+    /*header{
         background-color: #fff;
-        #height: 200px;
+        height: 23vh;
+    }*/
+
+    .inline{
+        display:inline
+    }
+    .l-content{
+        position: relative;
+        right: 0vw;
+        top: 5vh;
+    }
+    #logoutBtn{
+        position: relative;
+        left: 85vw;
+        top: 5vh;
     }
 </style>

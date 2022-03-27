@@ -1,19 +1,21 @@
 <template>
-    <div class="unreviewedCTA">
+    <div id="rci">
         <el-row>
             <el-col>
                 <el-card>
                     <div class="reviewCT">
                         <el-table
-                                :data="unreviewCTA"
+                                :data="unreviewCIA"
                                 style="width: 100%">
                             <el-table-column prop="review_id" label="编号" width="50">
                             </el-table-column>
-                            <el-table-column prop="team_name" label="队伍名" width="250">
+                            <el-table-column prop="applicant_team_id" label="队伍编号" width="250">
                             </el-table-column>
-                            <el-table-column prop="applicant_id" label="申请人" width="200">
+                            <el-table-column prop="item_name" label="项目名" width="200">
                             </el-table-column>
-                            <el-table-column prop="team_describe" label="描述" width="350">
+                            <el-table-column prop="item_describe" label="项目描述" width="350">
+                            </el-table-column>
+                            <el-table-column prop="teacher_id" label="教师id" width="350">
                             </el-table-column>
                             <el-table-column prop="creation_time" label="创建时间" width="350">
                             </el-table-column>
@@ -21,10 +23,10 @@
                                     fixed="right"
                                     label="操作"
                                     width="200">
-                            <template slot-scope="scope">
-                                <el-button @click="approved(scope.row.review_id,1)" type="success" round size="small">接受</el-button>
-                                <el-button @click="approved(scope.row.review_id,-1)" type="danger" round size="small">拒绝</el-button>
-                            </template>
+                                <template slot-scope="scope">
+                                    <el-button @click="approved(scope.row.review_id,1)" type="success" round size="small">接受</el-button>
+                                    <el-button @click="approved(scope.row.review_id,-1)" type="danger" round size="small">拒绝</el-button>
+                                </template>
                             </el-table-column>
                         </el-table>
                     </div>
@@ -36,33 +38,22 @@
 
 <script>
     export default {
-        name: "unreviewedCTA",
+        name: "opReviewCreateItem",
         data(){
             return{
-                unreviewCTA:[]
+                unreviewCIA:[]
             }
         },
         mounted() {
-            this.getUnreviewedCT()
+            this.getUnreviewedCI()
         },
         methods:{
-            getUnreviewedCT:function () {
-                this.axios({
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    },
-                    method:'get',
-                    url:'/teacher/basic/findUnreviewedCTA',
-                    dataType:"json"
-                }).then((res)=>{
-                    if (res!=null) {
-                        /*console.log("res : "+JSON.stringify(res))
-                        console.log("res.data : "+JSON.stringify(res.data))*/
-                        this.unreviewCTA = res.data
-                    }
-                }).catch((err)=>{
-                    console.log(err)
-                })
+            getUnreviewedCI:function () {
+                this.axios.get('/admin/operation/findUnreviewedCIA')
+                    .then(res=>{
+                        console.log("CI res.data:"+JSON.stringify(res.data))
+                        this.unreviewCIA=res.data
+                    })
             },
             approved:function (review_id,approved) {
                 /*alert("req:"+JSON.stringify(review_id)+"app"+approved)*/
@@ -72,23 +63,20 @@
                     },
                     params:{
                         review_id:review_id,
-                        t_approved:approved
+                        h_approved:approved
                     },
                     method:'PUT',
-                    url:'/teacher/basic/reviewCTA',
+                    url:'/admin/operation/reviewCIA',
                     dataType:"json"
                 }).then((res)=>{
                     if (res!=null) {
                         console.log("res : "+JSON.stringify(res))
-                        this.getUnreviewedCT()
-
+                        this.getUnreviewedCI()
                     }
                 }).catch((err)=>{
                     console.log(err)
                 })
             }
-
-
         }
     }
 </script>

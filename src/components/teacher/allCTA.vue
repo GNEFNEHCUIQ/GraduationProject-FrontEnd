@@ -44,7 +44,7 @@
                         'Content-Type': 'application/json;charset=utf-8'
                     },
                     method:'get',
-                    url:'/teacher/basic/findATeachersAllCTA',
+                    url:'/teacher/basic/findAllCTA',
                     dataType:"json"
                 }).then((res)=>{
                     if (res!=null) {

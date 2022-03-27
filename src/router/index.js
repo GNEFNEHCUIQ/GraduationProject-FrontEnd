@@ -20,6 +20,12 @@ import TeamItemDetail from '../views/Team/TeamItemDetail.vue'
 Vue.use(VueRouter)
 
 const routes = [
+
+    {
+        path: '/blank',
+        name: 'blank',
+        component: blank
+    },
   {
         path: '/login',
         name: 'Login',
@@ -98,11 +104,6 @@ const routes = [
                 path: '/userInfo',
                 name: 'UserInfo',
                 component: UserInfo
-            },
-            {
-                path: '/blank',
-                name: 'blank',
-                component: blank
             }
         ]
     }

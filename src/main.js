@@ -7,6 +7,17 @@ import Router from 'vue-router'
 import global_ from './global/global.vue'
 import "@/static/global.css"
 
+/*quill 富文本编辑器*/
+import VueQuillEditor from 'vue-quill-editor'
+
+import 'quill/dist/quill.core.css' // import styles
+import 'quill/dist/quill.snow.css' // for snow theme
+import 'quill/dist/quill.bubble.css' // for bubble theme
+
+Vue.use(VueQuillEditor, /* { default global options } */)
+
+
+
 
 import {postRequest} from "./utils/api";
 import {getRequest} from "./utils/api";
@@ -44,6 +55,8 @@ router.beforeEach((to,from,next)=>{
     //如果不登陆，就让他去登录页面，判断目标路由是否是登录界面
     if (to.path === '/login' ) {
       // 访问的登录页，直接跳转
+      next();
+    }else if( to.path === '/register'){
       next();
     } else if (to.path === '/' ){
       next('/login' );

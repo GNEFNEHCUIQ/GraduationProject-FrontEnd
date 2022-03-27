@@ -43,8 +43,8 @@
                                 label="项目名"
                                 width="360">
                             <template slot-scope="scope">
-                            <router-link :to="{name:'team/item/itemDetail',params:{id:scope.row.item_id}}">{{scope.row.item_name}}</router-link>
-                        </template>
+                                <router-link :to="{name:'team/item/itemDetail',params:{id:scope.row.item_id}}">{{scope.row.item_name}}</router-link>
+                            </template>
                         </el-table-column>
 
 
@@ -56,22 +56,46 @@
                     </el-table>
                 </el-card>
             </el-col>
+
+
             <el-col :span="12">
                 <el-card>
-                    teammate
+                    <el-table
+                            :data="teamMemberList"
+                            height="250"
+                            style="width: 100%">
+                        <el-table-column
+                                prop="user_id"
+                                label="队员名"
+                                width="360">
+                            <!--<template slot-scope="scope">
+                                <router-link :to="{name:'team/item/itemDetail',params:{id:scope.row.item_id}}">{{scope.row.item_name}}</router-link>
+                            </template>-->
+                        </el-table-column>
+
+                        <el-table-column
+                                prop="item_status"
+                                label="项目情况"
+                                width="110">
+                        </el-table-column>
+                    </el-table>
                 </el-card>
             </el-col>
+
+
         </el-row>
         <div class="float-button" @click="handleCreate">
             <i class="el-icon-circle-plus-outline"></i>
         </div>
 
-        <el-dialog :visible.sync="dialogFormVisible">
+        <el-dialog
+                :visible.sync="dialogFormVisible"
+                title="申请创建项目"
+        >
 
             <el-form
                     :model="createItemForm"
-                    title="创建项目"
-                    ref="dataForm"
+                    ref="createItemForm"
                     label-position="left"
                     label-width="90px"
                     style="width: 400px; margin-left:50px;"
@@ -101,7 +125,7 @@
                 team_id: this.$route.params.id,
                 teamInfo:[],
                 teamItemList:[],
-                teammateList:[],
+                teamMemberList:[],
                 createItemForm:{
                     item_name:'',
                     item_describe:''
@@ -111,7 +135,7 @@
         mounted() {
             this.getTeamInfo()
             this.getTeamItem()
-            this.getTeammate()
+            this.getTeamMemberList()
         },
         methods:{
             getTeamInfo:function(){
@@ -157,7 +181,7 @@
                     console.log(err)
                 })
             },
-            getTeammate:function(){
+            getTeamMemberList:function(){
                 this.axios({
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
@@ -172,7 +196,7 @@
                     if (res!=null) {
                         /*console.log("res : "+JSON.stringify(res))
                         console.log("res.data : "+JSON.stringify(res.data))*/
-                        this.teammateList=res.data
+                        this.teamMemberList=res.data
                     }
                 }).catch((err)=>{
                     console.log(err)
@@ -182,9 +206,9 @@
                 this.dialogFormVisible = true
             },
             createItem:function () {
-                console.log(JSON.stringify(this.createTeamForm))
-                alert("this.createItemForm.item_name:"+this.createItemForm.item_name+"item_describe:this.createItemForm.item_describe:"+this.createItemForm.item_describe)
-                return
+                //console.log(JSON.stringify(this.createTeamForm))
+                //alert("this.createItemForm.item_name:"+this.createItemForm.item_name+"item_describe:this.createItemForm.item_describe:"+this.createItemForm.item_describe)
+
                 if (this.createItemForm.item_name!='' && this.createItemForm.item_describe!='' ){
                     this.axios({
                         headers: {
@@ -196,12 +220,14 @@
                             item_describe:this.createItemForm.item_describe
                         },
                         method:'POST',
-                        url:'applyToCreateItem',
+                        url:'/team/manage/applyToCreateItem',
                         dataType:"json"
                     }).then((res)=>{
                         if (res!=null) {
-                            console.log("res : "+JSON.stringify(res))
-                            console.log("res.data : "+JSON.stringify(res.data))
+                            /*console.log("res : "+JSON.stringify(res))
+                            console.log("res.data : "+JSON.stringify(res.data))*/
+                            this.$message.success("申请成功！正等待教师与管理员审核！")
+                            location.reload();
                         }
                     }).catch((err)=>{
                         console.log(err)
@@ -225,7 +251,7 @@
         line-height: 40px;
         color: #1989fa;
         position: fixed;
-        height: 90px;
+        height: 40px;
         width: 40px;
         bottom: 90px;
         right: 50px;

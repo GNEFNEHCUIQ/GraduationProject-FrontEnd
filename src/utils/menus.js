@@ -13,12 +13,31 @@ export const initMenu = (router,store)=>{
             router.addRoutes(fmtRoutes)
             store.commit('initRoutes',fmtRoutes)
         }
-    })*/
-    if (store.state.routes.length > 0) {
-        /*console.log("null了吗")*/
+    })*/axios({
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        dataType: "json",
+        method:'get',
+        url:'/menu/getMenu',
+    }).then((res)=>{
+        /*console.log("store.state.routes.length:"+store.state.routes.length)
+        console.log("res : "+JSON.stringify(res))
+        console.log("res.data : "+JSON.stringify(res.data))*/
+        if (res){
+            let fmtRoutes=formatRoutes(res.data)
+            router.addRoutes(fmtRoutes)
+            store.commit('initRoutes',fmtRoutes)
+        }
+    }).catch((err)=>{
+        console.log(err)
+        //alert(err)
+    })
+    /*if (store.state.routes.length > 0) {
+        /!*console.log("null了吗")*!/
         return null;
     }else if (store.state.routes.length==0) {
-        /*console.log("前store.state.routes.length:"+store.state.routes.length)*/
+        /!*console.log("前store.state.routes.length:"+store.state.routes.length)*!/
             axios({
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -27,9 +46,9 @@ export const initMenu = (router,store)=>{
             method:'get',
             url:'/menu/getMenu',
         }).then((res)=>{
-            /*console.log("store.state.routes.length:"+store.state.routes.length)
+            /!*console.log("store.state.routes.length:"+store.state.routes.length)
             console.log("res : "+JSON.stringify(res))
-            console.log("res.data : "+JSON.stringify(res.data))*/
+            console.log("res.data : "+JSON.stringify(res.data))*!/
             if (res){
                 let fmtRoutes=formatRoutes(res.data)
                 router.addRoutes(fmtRoutes)
@@ -39,7 +58,7 @@ export const initMenu = (router,store)=>{
             console.log(err)
             //alert(err)
         })
-    }
+    }*/
 }
 
 export const formatRoutes=(router) =>{

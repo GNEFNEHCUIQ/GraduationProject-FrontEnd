@@ -57,7 +57,10 @@
 </script>
 
 <style scoped>
-
+    h3{
+        position: relative;
+        left: 1vw;
+    }
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
         min-height: 400px;

@@ -17,7 +17,7 @@
                 <el-input type="text" v-model="form.code" placeholder="点击图片更换验证码"></el-input>
             </el-form-item>
             <img src="" alt="">-->
-            <el-checkbox class="loginRemember" v-model="checked">记住我</el-checkbox>
+            <!--<el-checkbox class="loginRemember" v-model="checked">记住我</el-checkbox>-->
             <div class="buttonBox">
                 <div class="loginBox">
                     <el-button id="loginBtn" type="success" @click="login" style="width: 100%">登录</el-button>
@@ -123,8 +123,8 @@
                             window.sessionStorage.setItem("tokenStr",tokenStr)
                             console.log("-------------------------------------------------------")
                             console.log("tokenStr:"+JSON.stringify(tokenStr))*/
-                            /*console.log("response.data.tokenHead:"+response.data.tokenHead)
-                            console.log("response.data.token:"+response.data.token)*/
+                            console.log("response.data.tokenHead:"+response.data.tokenHead)
+                            console.log("response.data.token:"+response.data.token)
                             const tokenStr = response.data.tokenHead + ' ' + response.data.token;
                             //将登录成功，拼接后的token存入全局，
                             window.sessionStorage.setItem('tokenStr', tokenStr);
